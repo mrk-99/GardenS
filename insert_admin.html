@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="dashboard">
+                <div class="left">
+                    <span class="left__icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <div class="left__content">
+                        <div class="left__logo">Garden.S</div>
+                        <div class="left__profile">
+                            <div class="left__image"><img src="assets/profile.jpg" alt=""></div>
+                            <p class="left__name">Administrator</p>
+                        </div>
+                        <ul class="left__menu">
+                            <li class="left__menuItem">
+                                <a href="admin_dashboard.html" class="left__title"><img src="assets/icon-dashboard.svg"
+                                        alt="">Tổng quát</a>
+                            </li>
+                            <li class="left__menuItem">
+                                <div class="left__title"><img src="assets/icon-user.svg" alt="">Tài khoản<img
+                                        class="left__iconDown" src="assets/arrow-down.svg" alt=""></div>
+                                <div class="left__text">
+                                    <a class="left__link" href="insert_admin.html">Thêm tài khoản</a>
+                                    <a class="left__link" href="view_admins.html">Xem tài khoản</a>
+                                </div>
+                            </li>
+                            <li class="left__menuItem">
+                                <a href="" class="left__title"><img src="assets/icon-logout.svg" alt="">Đăng Xuất</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="right__content">
+                        <div class="right__title">Bảng điều khiển</div>
+                        <p class="right__desc">Thêm tài khoản</p>
+                        <div class="right__formWrapper">
+                            <form action="" method="post">
+                                <div class="right__inputWrapper">
+                                    <label for="name">Tên tài khoản</label>
+                                    <input type="text" placeholder="Tên admin">
+                                </div>
+                                <div class="right__inputWrapper">
+                                    <label for="email">Email</label>
+                                    <input type="text" placeholder="Email">
+                                </div>
+                                <div class="right__inputWrapper">
+                                    <label for="password">Mật khẩu</label>
+                                    <input type="text" placeholder="Mật khẩu">
+                                </div>
+                                <div class="right__inputWrapper">
+                                    <label for="image">Hình ảnh</label>
+                                    <input type="file">
+                                </div>
+                                <button class="btn" type="submit">Thêm</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+.rGauge {
+  width: 200px;
+  height: 145px;
+}
+.rGauge-base {
+  stroke: #edebeb;
+  fill: none;
+}
+.rGauge-progress {
+  fill: none;
+}
+.rGauge-val {
+  font-weight: 700;
+  font-size: 1.3em;
+}
+.rGauge-min-val,
+.rGauge-max-val {
+  fill: #b3b3b3;
+}
+.vGauge {
+  width: 145px;
+  height: 145px;
+}
+.vGauge-base {
+  fill: #edebeb;
+}
+.vGauge-val {
+  font-weight: 700;
+  font-size: 1.3em;
+}
+.vGauge-min-val,
+.vGauge-max-val {
+  fill: #b3b3b3;
+}
+/*  */
+.gauge-section {
+  text-align: center;
+}
+.gauge-section h3 {
+  margin-bottom: 0;
+}
+#hum {
+  color: #fff;
+}
+.gauge {
+  display: inline-block;
+  color: #fff;
+}
