@@ -17,7 +17,7 @@
     <a href="javascript:void(0)" class="form-login-cancel">&times;</a>
 
     <div id="login_div" class="main-div">
-      <h3>Đăng nhập</h3>
+      <h1>Đăng nhập</h1>
       <input type="email" placeholder="Email..." id="email_field" />
       <input type="password" placeholder="Password..." id="password_field" />
       <button onclick="login()">Đăng nhập</button>
@@ -37,30 +37,109 @@
       <!-- Menu -->
       <section class="nav-bar">
         <h1 class="nav-1"><a href="#home">Trang chủ</a></h1>
-        <h1 class="nav-2"><a href="#about">Về chúng tôi</a></h1>
-        <h1 class="nav-3"><a href="#service">Dịch vụ</a></h1>
+        <h1 class="nav-2"><a href="#about">Giới thiệu</a></h1>
+        <h1 class="nav-3"><a href="#service">Chức năng</a></h1>
         <h1 class="nav-4"><a href="#contact">Liên hệ</a></h1>
         <h1 class="nav-5">
           <a class="log_in" style="cursor: pointer">Đăng nhập</a>
         </h1>
       </section>
       <div class="section-blur">
-        <h2>.</h2>
+        <h2></h2>
       </div>
     </section>
+    <!-- Giới thiệu -->
     <section id="about" class="cd-section">
       <div class="section-blur">
-        <h2>Section 2</h2>
+        <h2 class="flex-about-container">
+          <div class="about-left">
+            <a class="about-img-1"><img src="./img/shape1.png" alt=""></a>
+            <a class="about-img-2"><img src="./img/shape2.png" alt=""></a>
+            <a class="about-img-3"><img src="./img/bg_about.jpg" alt=""></a>
+          </div>
+          <div class="about-right">
+            <div class="about-title">
+              <p>Khởi đầu từ những ước mơ ______________</p>
+              <h1>Strategy is all about choices</h1>
+            </div>
+            <div class="about-content">
+              <p>To build an evolutionary advantage we need to ask ourselves: how can we develop the capability of
+                great
+                choice making across the organisation? In an ever-evolving world, it is critical to capitalise
+                on opportunities for transformational growth.</p>
+            </div>
+            <button class="about-button" type="button">Xem thêm</button>
+          </div>
+        </h2>
       </div>
     </section>
+    <!-- Chức năng -->
     <section id="service" class="cd-section">
       <div class="section-blur">
-        <h2>Section 3</h2>
+        <h2 class="flex-container">
+          <div class="flex-service-left">
+            <div class="service-title">
+              <h1>Các chức năng chính</h1>
+            </div>
+            <div class="flex-service-part row">
+              <div class="service-icon collum-2">
+                <i class="fa-cog"></i>
+              </div>
+              <div class="service-content collum-4">
+                <h1>Tưới tự động</h1>
+                <p>Đo đạc thông số và tự động bật tắt máy bơm để tưới cây.</p>
+              </div>
+              <div class="service-icon collum-2">
+                <i class="fa-angle-down"></i>
+              </div>
+              <div class="service-content collum-4">
+                <h1>Kiểm tra độ ẩm đất</h1>
+                <p>Kiểm tra độ ẩm của đất để dựa vào đó bật tắt các chức năng.</p>
+              </div>
+            </div>
+            <div class="flex-service-part row">
+              <div class="service-icon collum-2">
+                <i class="fa-facebook-square"></i>
+              </div>
+              <div class="service-content collum-4">
+                <h1>Đo nhiệt độ môi trường</h1>
+                <p>Hiển thị nhiệt độ môi trường ở khu vực vườn của bạn.</p>
+              </div>
+              <div class="service-icon collum-2">
+                <i class="fa-instagram"></i>
+              </div>
+              <div class="service-content collum-4">
+                <h1>Đo độ ẩm môi trường</h1>
+                <p>Hiển thị độ ẩm môi trường ở khu vực vườn của bạn.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex-service-right"></div>
+        </h2>
       </div>
     </section>
+    <!-- Liên hệ -->
     <section id="contact" class="cd-section">
       <div class="section-blur">
-        <h2>Liên hệ</h2>
+        <h2 class="flex-container">
+          <div class="flex-contact-left">
+            <h1>Giờ làm việc</h1>
+            <p>Thứ hai: 9:00 am – 5:00 pm</p>
+            <p>Thứ ba: 9:00 am – 5:00 pm</p>
+            <p>Thứ tư: 9:00 am – 5:00 pm</p>
+            <p>Thứ năm: 9:00 am – 5:00 pm</p>
+            <p>Thứ sáu: 9:00 am – 5:00 pm</p>
+            <p>Thứ bảy: 9:00 am – 12:00 am</p>
+            <p>Chủ nhật: Nghỉ</p>
+          </div>
+          <div class="flex-contact-right">
+            <h1>Gửi lời nhắn cho chúng tôi</h1>
+            <input type="text" placeholder="Họ Tên" class="name" />
+            <input type="text" placeholder="Email" class="email" />
+            <br/><input type="text" placeholder="Lời nhắn của bạn" class="mess" />
+            <br/><button class="contact-button" type="button">Gửi lời nhắn</button>
+          </div>
+        </h2>
       </div>
     </section>
     <!-- <section id="contact" class="cd-section">
@@ -80,7 +159,7 @@
   <!-- SDK Firebase JS bắt buộc phải được liệt kê đầu tiên -->
   <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
-  <script src="js/connectfirebase.js">// Cấu hình Firebase của ứng dụng, đăng nhập, đăng xuất</script> 
+  <script src="js/connectfirebase.js">// Cấu hình Firebase của ứng dụng, đăng nhập, đăng xuất</script>
   <script src="js/jquery-3.5.1.min.js"></script>
   <script src="js/velocity.min.js"></script>
   <script src="js/velocity.ui.min.js"></script>

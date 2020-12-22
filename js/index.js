@@ -201,7 +201,7 @@ jQuery(document).ready(function($){
 	}
 
 	function deviceType() {
-		//Bật thông báo nếu phát hiện là mobile
+		//Bật thông báo nếu phát hiện màn hình nhỏ hơn 1050px
 		return window.getComputedStyle(document.querySelector('body'), '::before').getPropertyValue('content').replace(/"/g, "").replace(/'/g, "");
 	}
 

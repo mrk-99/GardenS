@@ -141,9 +141,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- <a href="" class="right__tableMore">
-                                <p>Xem tất cả các chức năng</p> <img src="assets/arrow-right-black.svg" alt="">
-                            </a> -->
                         </div>
                     </div>
                 </div>
@@ -315,6 +312,7 @@
                 }, 60000);
             } else {
                 //Mở chỉnh sửa ở ô nhập phút
+                document.getElementById("minute").value = null;
                 document.getElementById("minute").disabled = false;
                 if (CheckFuntionTime) {
                     clearInterval(CheckFuntionTime);
@@ -322,21 +320,23 @@
             }
         }
         function validate() {
-            var thoigian = document.getElementById("minute").value;
-            if (isNaN(thoigian)) {
-                alert("Chỉ được nhập số phút tại chức năng hẹn giờ!");
-                tatnuthengio();
-                return false;
-            }
-            if (thoigian == "") {
-                alert("Ô nhập số phút đang để trống. Bạn vui lòng chọn phút và bật lại chức năng này!");
-                tatnuthengio();
-                return false;
-            }
-            if (thoigian <= 0 || thoigian > 1440) {
-                alert("Chỉ được nhập số phút từ 1 đến 1440 (tương đương 24 giờ).");
-                tatnuthengio();
-                return false;
+            if ($(".time input").is(':checked')) {
+                var thoigian = document.getElementById("minute").value;
+                if (isNaN(thoigian)) {
+                    alert("Chỉ được nhập số phút tại chức năng hẹn giờ!");
+                    tatnuthengio();
+                    return false;
+                }
+                if (thoigian == "") {
+                    alert("Ô nhập số phút đang để trống. Bạn vui lòng chọn phút và bật lại chức năng này!");
+                    tatnuthengio();
+                    return false;
+                }
+                if (thoigian <= 0 || thoigian > 1440) {
+                    alert("Chỉ được nhập số phút từ 1 đến 1440 (tương đương 24 giờ).");
+                    tatnuthengio();
+                    return false;
+                }
             }
             return true;
         }

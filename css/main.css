@@ -1191,7 +1191,6 @@ body {
 }
 /*# sourceMappingURL=main.css.map */
 #minute {
-  width: unset;
   height: 2em;
   padding: 5px;
   border-radius: 5px;
