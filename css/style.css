@@ -333,6 +333,8 @@ input, button {
   margin-top: 150px;
   padding: 20px;
   display: none;
+  opacity: 0;
+  transition: all 1s;
 }
 .main-div input {
   display: block;

@@ -106,7 +106,7 @@ function getHumColor(x) {
 	var colors = ['#E3F2FD','#BBDEFB','#90CAF9','#64B5F6','#42A5F5','#2196F3','#1E88E5','#1976D2','#1565C0','#0D47A1','#0D47A1'];
 	return colors[Math.round(x/10)];
 }
-//Set màu Water
+//Set màu Water (đổi thành độ ẩm đất)
 function getWaterColor(w) {
 	var colors = ['#E3F2FD','#BBDEFB','#90CAF9','#64B5F6','#42A5F5','#2196F3','#1E88E5','#1976D2','#1565C0','#0D47A1','#0D47A1'];
 	return colors[Math.round(w/10)];

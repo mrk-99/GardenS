@@ -92,11 +92,13 @@
         $("#home,.nav-bar,.section-blur,.cd-vertical-nav").addClass("filter"); //Không thể filter thằng cha của position fixed được, vậy nên phải addClass từng thằng một
         $("#blur").css({ opacity: "0.5" });
         $("#myNav").css({ width: "100%" });
+        $("#login_div, #user_div").css({ opacity: "1" });
       });
       $(".form-login-cancel").click(function () {
         $("#home,.nav-bar,.section-blur,.cd-vertical-nav").removeClass("filter");
         $("#blur").css({ opacity: "" });
         $("#myNav").css({ width: "0" });
+        $("#login_div, #user_div").css({ opacity: "0" });
       });
     });
   </script>

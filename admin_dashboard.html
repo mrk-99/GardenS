@@ -75,8 +75,7 @@
                                         <tr>
                                             <th>STT</th>
                                             <th style="text-align: left;">Tên Chức Năng</th>
-                                            <th>ID chức năng</th>
-                                            <th>Mã Chức Năng</th>
+                                            <th>Mô Tả</th>
                                             <th>Trạng Thái</th>
                                         </tr>
                                     </thead>
@@ -85,8 +84,7 @@
                                         <tr>
                                             <td data-label="STT">1</td>
                                             <td data-label="Tên Chức Năng" style="text-align: left;">Máy bơm 1</td>
-                                            <td data-label="ID chức năng">111111</td>
-                                            <td data-label="Mã Chức Năng">1</td>
+                                            <td data-label="Mô Tả">Dùng để bật tắt máy bơm.</td>
                                             <td data-label="Trạng Thái">
                                                 <label class="switch pump1">
                                                     <input type="checkbox" />
@@ -96,9 +94,8 @@
                                         </tr>
                                         <tr>
                                             <td data-label="STT">2</td>
-                                            <td data-label="Tên Chức Năng" style="text-align: left;">máy bơm 2</td>
-                                            <td data-label="ID chức năng">111111</td>
-                                            <td data-label="Mã Chức Năng">2</td>
+                                            <td data-label="Tên Chức Năng" style="text-align: left;">Máy bơm 2</td>
+                                            <td data-label="Mô Tả">Dùng để bật tắt máy bơm.</td>
                                             <td data-label="Trạng Thái">
                                                 <label class="switch pump2">
                                                     <input type="checkbox" />
@@ -109,8 +106,7 @@
                                         <tr>
                                             <td data-label="STT">3</td>
                                             <td data-label="Tên Chức Năng" style="text-align: left;">Mái che</td>
-                                            <td data-label="ID chức năng">111111</td>
-                                            <td data-label="Mã Chức Năng">3</td>
+                                            <td data-label="Mô Tả">Dùng để bật tắt mái che.</td>
                                             <td data-label="Trạng Thái">
                                                 <label class="switch rain">
                                                     <input type="checkbox" />
@@ -121,10 +117,22 @@
                                         <tr>
                                             <td data-label="STT">4</td>
                                             <td data-label="Tên Chức Năng" style="text-align: left;">Đèn</td>
-                                            <td data-label="ID chức năng">111111</td>
-                                            <td data-label="Mã Chức Năng">4</td>
+                                            <td data-label="Mô Tả">Dùng để bật tắt đèn.</td>
                                             <td data-label="Trạng Thái">
                                                 <label class="switch light">
+                                                    <input type="checkbox" />
+                                                    <div></div>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="STT">5</td>
+                                            <td data-label="Tên Chức Năng" style="text-align: left;">Hẹn giờ tưới</td>
+                                            <td data-label="Chọn Số Phút Để Hẹn Giờ">
+                                                <input type="text" placeholder="Nhập số phút" id="minute" />
+                                            </td>
+                                            <td data-label="Trạng Thái">
+                                                <label class="switch time">
                                                     <input type="checkbox" />
                                                     <div></div>
                                                 </label>
@@ -166,13 +174,21 @@
                 //     var datatest = childSnapshot.val();
                 //     console.log(datatest);
                 // });
+                if (data.WaterCm.data <= 50) {
+                    canhbaodoamthap();
+                }
+                if (data.WaterCm.data > 80) {
+                    canhbaodoamcao();
+                }
             })
         }
         setTimeout(refresh, 100);
     </script>
     <script> //switch button
         var database = firebase.database().ref('Switch');
+        var CheckFuntionTime = null; //
 
+        //Lấy dữ liệu từ firebase về để set thuộc tính cho các nút
         database.on('value', function (snapshot) {
             var data = snapshot.val();
             console.log(data);
@@ -212,6 +228,7 @@
         //Bắt sự kiện khi bật/tắt các chức năng
         $('.switch input').on('change', function () {
             update();
+            hengio();
             var dad = $(this).parent();
             if ($(this).is(':checked'))
                 dad.addClass('switch-checked');
@@ -242,6 +259,67 @@
             }
             catch {
                 alert('Không thể lưu dữ liệu.');
+            }
+        }
+        function canhbaodoamthap() {
+            //Nếu máy bơm 1 hoặc 2 không bật thì sẽ hiện thông báo và bật máy bơm
+            if (!$(".pump1 input").is(':checked') || !$(".pump2 input").is(':checked')) {
+                alert("Độ ẩm quá thấp, không tốt cho cây trồng. Máy bơm sẽ tự động bật để tưới cây!");
+                firebase.database().ref('Switch/Pump1').update({
+                    data: 1,
+                });
+                firebase.database().ref('Switch/Pump2').update({
+                    data: 1,
+                });
+            }
+        }
+        function canhbaodoamcao() {
+            //Nếu máy bơm 1 hoặc 2 đang bật thì sẽ hiện thông báo và tắt máy bơm
+            if ($(".pump1 input").is(':checked') || $(".pump2 input").is(':checked')) {
+                alert("Độ ẩm quá cao, không tốt cho cây trồng. Máy bơm sẽ tự động tắt!");
+                firebase.database().ref('Switch/Pump1').update({
+                    data: 0,
+                });
+                firebase.database().ref('Switch/Pump2').update({
+                    data: 0,
+                });
+            }
+        }
+        function hengio() {
+            var thoigianhen = document.getElementById("minute").value;
+            if ($(".time input").is(':checked')) {
+                //Tắt chỉnh sửa ở ô nhập phút
+                document.getElementById("minute").disabled = true;
+                CheckFuntionTime = setInterval(function () {
+                    thoigianhen--;
+                    document.getElementById("minute").value = thoigianhen;
+                    if (thoigianhen <= 0) {
+                        //Tắt Interval
+                        clearInterval(CheckFuntionTime);
+                        //Bật cả 2 máy bơm khi thời gian hẹn đã đến
+                        alert("Giờ hẹn đã tới. Máy bơm sẽ tự động mở!");
+                        firebase.database().ref('Switch/Pump1').update({
+                            data: 1,
+                        });
+                        firebase.database().ref('Switch/Pump2').update({
+                            data: 1,
+                        });
+                        //Gọi lại hàm này để chạy 2 hàm cảnh báo độ ẩm
+                        refresh();
+                        //Tắt nút hẹn giờ đi
+                        $(".time input").prop('checked', false);
+                        $(".time").removeClass("switch-checked");
+                        //Set lại ô hẹn giờ
+                        document.getElementById("minute").value = null;
+                        document.getElementById("minute").disabled = false;
+                    }
+                }, 1000);
+            } else {
+                //Mở chỉnh sửa ở ô nhập phút
+                document.getElementById("minute").disabled = false;
+                if (CheckFuntionTime) {
+                    clearInterval(CheckFuntionTime);
+                }
             }
         }
     </script>
