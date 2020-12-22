@@ -21,6 +21,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		if(user.uid == "hPp1bY0FZKQVW9tKLWlUY1uCRlE2") {
 		  if(user != null){
 			  location.replace("admin_dashboard.html");
+			  alert("Đăng nhập thành công.");
 		  }
 		}
 		else {
@@ -32,8 +33,13 @@ firebase.auth().onAuthStateChanged(function(user) {
 	  }
 	} else {
 	  // Không có người dùng nào đăng nhập.
-	  document.getElementById("user_div").style.display = "none";
-	  document.getElementById("login_div").style.display = "block";
+	  if(!window.location.href.includes("index")){ // Kiểm tra nếu ko phải là trang chủ thì thông báo rồi chuyển sang trang chủ
+		//alert("Bạn chưa đăng nhập. Vui lòng đăng nhập để truy cập vào Bảng điều khiển.");
+		location.replace("index.html");
+	  } else {
+		document.getElementById("user_div").style.display = "none";
+		document.getElementById("login_div").style.display = "block";
+	  }
 	}
 });
 function login(){

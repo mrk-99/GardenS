@@ -1190,3 +1190,14 @@ body {
   width: 100%;
 }
 /*# sourceMappingURL=main.css.map */
+#minute {
+  width: unset;
+  height: 2em;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.01),
+  0 0 2px 2px rgba(0, 0, 0, 0.02), 
+  0 0 3px 3px rgba(0, 0, 0, 0.03);;
+  text-align: center;
+}

@@ -228,12 +228,16 @@
         //Bắt sự kiện khi bật/tắt các chức năng
         $('.switch input').on('change', function () {
             update();
+            validate();
             hengio();
+            refresh();
             var dad = $(this).parent();
-            if ($(this).is(':checked'))
+            if ($(this).is(':checked')) {
                 dad.addClass('switch-checked');
-            else
+            }
+            else {
                 dad.removeClass('switch-checked');
+            }
         });
         //Đẩy dữ liệu lên firebase
         function update() {
@@ -306,14 +310,9 @@
                         });
                         //Gọi lại hàm này để chạy 2 hàm cảnh báo độ ẩm
                         refresh();
-                        //Tắt nút hẹn giờ đi
-                        $(".time input").prop('checked', false);
-                        $(".time").removeClass("switch-checked");
-                        //Set lại ô hẹn giờ
-                        document.getElementById("minute").value = null;
-                        document.getElementById("minute").disabled = false;
+                        tatnuthengio();
                     }
-                }, 1000);
+                }, 60000);
             } else {
                 //Mở chỉnh sửa ở ô nhập phút
                 document.getElementById("minute").disabled = false;
@@ -321,6 +320,34 @@
                     clearInterval(CheckFuntionTime);
                 }
             }
+        }
+        function validate() {
+            var thoigian = document.getElementById("minute").value;
+            if (isNaN(thoigian)) {
+                alert("Chỉ được nhập số phút tại chức năng hẹn giờ!");
+                tatnuthengio();
+                return false;
+            }
+            if (thoigian == "") {
+                alert("Ô nhập số phút đang để trống. Bạn vui lòng chọn phút và bật lại chức năng này!");
+                tatnuthengio();
+                return false;
+            }
+            if (thoigian <= 0 || thoigian > 1440) {
+                alert("Chỉ được nhập số phút từ 1 đến 1440 (tương đương 24 giờ).");
+                tatnuthengio();
+                return false;
+            }
+            return true;
+        }
+        function tatnuthengio() {
+            document.getElementById("minute").focus();
+            //Tắt nút hẹn giờ đi
+            $(".time input").prop('checked', false);
+            $(".time").removeClass("switch-checked");
+            //Set lại ô hẹn giờ
+            document.getElementById("minute").value = null;
+            document.getElementById("minute").disabled = false;
         }
     </script>
 </body>
