@@ -101,9 +101,10 @@ body {
 .fixed {
   position: fixed;
   width: 100%;
+  height: fit-content;
   top: 0;
   background: rgba(0, 139, 0, 0.3);
-  z-index: 1;
+  z-index: 10;
 }
 .toright {
   margin-left: 30%;
@@ -148,7 +149,7 @@ body {
 }
 .cd-section:first-of-type > div {
   background-image: url("../img/home.jpg");
-  background-size: 100% 100%;
+  background-size: 100% 86%;
   background-repeat: no-repeat;
   z-index: -1;
 }
@@ -345,6 +346,11 @@ input, button {
   display: none;
   opacity: 0;
   transition: all 1s;
+}
+#user_div {
+  text-shadow: 0 2px 2.2px rgba(0, 0, 0, 0.05),
+    0 4px 5.3px rgba(0, 0, 0, 0.1), 
+    0 6px 10px rgba(0, 0, 0, 0.3);
 }
 .main-div input {
   display: block;
