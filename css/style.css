@@ -149,7 +149,7 @@ body {
 }
 .cd-section:first-of-type > div {
   background-image: url("../img/home.jpg");
-  background-size: 100% 86%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   z-index: -1;
 }
@@ -456,6 +456,10 @@ input, button {
 }
 .collum-4 {
   flex: 35%;
+}
+.flex-service-right img {
+  padding-right: 5rem;
+  width: 100%;
 }
 /* Giới thiệu */
 .flex-about-container {
