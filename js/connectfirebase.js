@@ -1,14 +1,14 @@
 // Cấu hình Firebase của ứng dụng web
 // Đối với SDK Firebase JS v7.20.0 trở lên, measurementId là tùy chọn
 var firebaseConfig = {
-  apiKey: "AIzaSyDO3DB5OM-A2aWtVCbV0IxNTIk49OljHdk",
-  authDomain: "doan-e849e.firebaseapp.com",
-  databaseURL: "https://doan-e849e.firebaseio.com",
-  projectId: "doan-e849e",
-  storageBucket: "doan-e849e.appspot.com",
-  messagingSenderId: "744905234473",
-  appId: "1:744905234473:web:da4b79067474dceecde438",
-  measurementId: "G-CJYT0D750R",
+    apiKey: "AIzaSyCOTFPO_QudNlI29KUwxO9mi89QXJtu4yg",
+    authDomain: "duan-99.firebaseapp.com",
+    databaseURL: "https://duan-99.firebaseio.com",
+    projectId: "duan-99",
+    storageBucket: "duan-99.appspot.com",
+    messagingSenderId: "149917415222",
+    appId: "1:149917415222:web:d784a7a95abd97df776597",
+    measurementId: "G-9CNRKT6LMD"
 };
 // Khởi tạo Firebase
 firebase.initializeApp(firebaseConfig);
@@ -18,7 +18,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 	  // Người dùng đã đăng nhập.
 	  var user = firebase.auth().currentUser;
 	  if(!window.location.href.includes("admin_dashboard")){ // Kiểm tra nếu ko phải là trang admin thì chuyển sang trang admin
-		if(user.uid == "hPp1bY0FZKQVW9tKLWlUY1uCRlE2") {
+		if(user.uid == "mqaF9FZzpCPlVXk4H0OT5DXc0pb2") {
 		  if(user != null){
 			  location.replace("admin_dashboard.html");
 			  alert("Đăng nhập thành công.");
